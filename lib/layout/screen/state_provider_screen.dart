@@ -24,6 +24,6 @@ class StateProviderScreen extends ConsumerWidget {
           ],
         ),
       ),
-    )
+    );
   }
 }
