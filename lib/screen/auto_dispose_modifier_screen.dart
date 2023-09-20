@@ -14,6 +14,7 @@ class AutoDisposeModifierScreen extends ConsumerWidget {
     return DefaultLayout(
       title: "AutoDisposeModifierScreen",
       body: Center(
+        // FutureProvider이기 때문에 state.when을 사용
         child: state.when(
           data: (data) => Text(
             data.toString(),
