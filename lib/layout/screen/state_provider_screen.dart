@@ -11,10 +11,15 @@ class StateProviderScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ref.watch는 특정 프로바이더를 바라보고 있다가 그 프로바이더가 변경이 된다면은 빌드를 다시 실행해라
     final provider = ref.watch(numberProvider);
-    return const DefaultLayout(
+    return DefaultLayout(
       title: 'state_provider_screen',
       body: Column(
-        children: [],
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            provider.toString(),
+          )
+        ],
       ),
     );
   }
