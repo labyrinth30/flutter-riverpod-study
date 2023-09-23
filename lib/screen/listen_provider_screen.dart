@@ -36,6 +36,7 @@ class _ListenProviderScreenState extends ConsumerState<ListenProviderScreen>
     // listen을 하면 provider 값이 변경될 때마다 이 함수를 실행함
     // 관리하고 있는 index 값에 따라 페이지가 변경됨
     // dispose할 필요 없음
+    // provider 값이 변경되면 controller.animateTo(next)를 실행함
     ref.listen<int>(listenProvider, (previous, next) {
       if (previous != next) {
         controller.animateTo(next);
