@@ -13,14 +13,17 @@ class StateProviderScreen extends ConsumerWidget {
     final provider = ref.watch(numberProvider);
     return DefaultLayout(
       title: 'state_provider_screen',
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Text(
-            provider.toString(),
-          )
-        ],
+      body: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              provider.toString(),
+            )
+          ],
+        ),
       ),
-    );
+    )
   }
 }
