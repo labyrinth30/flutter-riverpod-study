@@ -24,9 +24,21 @@ class StateProviderScreen extends ConsumerWidget {
             ),
             ElevatedButton(
               onPressed: () {
+                // StateProvider의 state를 update 하는 첫 번째 방법
                 ref.read(numberProvider.notifier).update((state) => state + 1);
               },
               child: const Text('up'),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              // StateProvider의 state를 update 하는 두 번째 방법
+              onPressed: () {
+                ref.read(numberProvider.notifier).state =
+                    ref.read(numberProvider.notifier).state - 1;
+              },
+              child: const Text('down'),
             ),
             const SizedBox(
               height: 20,
