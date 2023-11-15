@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod_study/layout/default_layout.dart';
 import 'package:flutter_riverpod_study/model/shopping_item_model.dart';
@@ -21,10 +20,6 @@ class StateNotifierProviderScreen extends ConsumerWidget {
                 title: Text(e.name),
                 value: e.hasBought,
                 onChanged: (value) {
-                  print(ref
-                      .read(shoppingListProvider.notifier)
-                      .state
-                      .map((e) => e.name));
                   ref.read(shoppingListProvider.notifier).toggleHasBought(
                         name: e.name,
                       );
