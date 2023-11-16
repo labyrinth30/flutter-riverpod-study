@@ -10,6 +10,7 @@ class StreamProviderScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // watch를 통해 multipleStreamProvider를 감시하고 있다가 값이 바뀌면 다시 빌드하게 함
+    // 캐싱이 되기 때문에 다시 들어와도 0, 9, 18이 나옴
     final state = ref.watch(multipleStreamProvider);
     return DefaultLayout(
       title: "StreamProviderScreen",
