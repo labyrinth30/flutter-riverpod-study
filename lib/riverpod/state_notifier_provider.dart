@@ -5,9 +5,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod_study/model/shopping_item_model.dart';
 
+// 첫 번째 제네릭으로 어떤 노티파이어를 사용할건지
+// 두 번째 제네릭으로 관리하는 상태의 타입을 넣기
 final shoppingListProvider =
     StateNotifierProvider<ShoppingListNotifier, List<ShoppingItemModel>>(
-        (ref) => ShoppingListNotifier());
+  (ref) => ShoppingListNotifier(),
+);
 
 class ShoppingListNotifier extends StateNotifier<List<ShoppingItemModel>> {
   // 생성자는 처음에 어떤 값으로 상태를 초기화할 지 적어줘야함

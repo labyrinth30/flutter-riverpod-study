@@ -30,7 +30,9 @@ class FutureProviderScreen extends ConsumerWidget {
                 textAlign: TextAlign.center,
               );
             }, // error는 에러가 발생했을 때 호출
-            loading: () => const Center(child: CircularProgressIndicator()),
+            loading: () => const Center(
+              child: CircularProgressIndicator(),
+            ),
           ), // loading은 로딩 중일 때 호출
         ],
       ),
