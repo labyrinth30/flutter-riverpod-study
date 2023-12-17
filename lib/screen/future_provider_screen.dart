@@ -17,23 +17,28 @@ class FutureProviderScreen extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          // state.when과 map이 있음
+          // state.when은 AsyncValue의 상태에 따라서 다른 위젯을 반환
+          // data는 로딩이 끝나고 데이터가 있을 때
+          // error는 에러가 발생했을 때
+          // loading은 로딩 중일 때
           state.when(
             data: (data) {
               return Text(
                 data.toString(),
                 textAlign: TextAlign.center,
               );
-            }, // data는 로딩이 끝나고 데이터가 있을 때 호출되는 함수
+            },
             error: (error, stackTrace) {
               return Text(
                 error.toString(),
                 textAlign: TextAlign.center,
               );
-            }, // error는 에러가 발생했을 때 호출
+            },
             loading: () => const Center(
               child: CircularProgressIndicator(),
             ),
-          ), // loading은 로딩 중일 때 호출
+          ),
         ],
       ),
     );
