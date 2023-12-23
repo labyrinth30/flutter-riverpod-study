@@ -9,7 +9,7 @@ class SelectProviderScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // 토글버튼 누르면 build가 다시 실행됨
-    print('build'); 
+    print('build');
     // 만약 isSpicy가 변경되었을 때만 렌더링하고싶다면
     // value는 selectProvider의 상태
     final state = ref.watch(
