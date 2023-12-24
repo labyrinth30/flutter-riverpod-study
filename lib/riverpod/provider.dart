@@ -26,9 +26,12 @@ final filteredShoppingListProvider = Provider<List<ShoppingItemModel>>(
 );
 
 enum FilterState {
+  // 모두
   all,
-  notSpicy,
+  // 매운 것
   spicy,
+  // 안 매운 것
+  notSpicy,
 }
 
 final filterProvider = StateProvider<FilterState>((ref) => FilterState.all);
