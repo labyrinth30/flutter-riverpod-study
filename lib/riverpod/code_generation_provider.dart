@@ -1,7 +1,5 @@
 import 'dart:core';
 
-import 'package:flutter/widgets.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'code_generation_provider.g.dart';
@@ -9,7 +7,7 @@ part 'code_generation_provider.g.dart';
 // 사용하는 이유
 // 1) 어떤 프로바이더를 사용할지 결정할 고민 할 필요가 없도록
 
-final _testProvider = Provider<String>((ref) => 'Hello  Code Generation');
+// final _testProvider = Provider<String>((ref) => 'Hello Code Generation');
 
 @riverpod
 String gState(GStateRef ref) {
@@ -56,4 +54,22 @@ int gStateMultiply(
   required int number2,
 }) {
   return number1 * number2;
+}
+
+// stateNotifierProvider 사용방식
+@riverpod
+class GStateNotifier extends _$GStateNotifier {
+  // 초기 상태 지정 필수(build)
+  @override
+  int build() {
+    return 0;
+  }
+
+  void increment() {
+    state++;
+  }
+
+  void decrement() {
+    state--;
+  }
 }

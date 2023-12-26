@@ -18,6 +18,7 @@ class CodeGenerationScreen extends ConsumerWidget {
         number2: 20,
       ),
     );
+    final state5 = ref.watch(gStateNotifierProvider);
     return DefaultLayout(
       title: 'CodeGenerationScreen',
       body: Column(
@@ -59,6 +60,33 @@ class CodeGenerationScreen extends ConsumerWidget {
             ),
           ),
           Text('State4: $state4'),
+          Text('State5: $state5'),
+          Row(
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  ref.read(gStateNotifierProvider.notifier).increment();
+                },
+                child: const Text('Increment'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  ref.read(gStateNotifierProvider.notifier).decrement();
+                },
+                child: const Text('Decrement'),
+              ),
+            ],
+          ),
+          // invalidate()
+          // state를 유효하지 않게 하여 초기화하는 방법
+          ElevatedButton(
+            onPressed: () {
+              ref.invalidate(gStateNotifierProvider);
+            },
+            child: const Text(
+              'Invalidate',
+            ),
+          ),
         ],
       ),
     );
