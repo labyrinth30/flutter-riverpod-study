@@ -18,7 +18,8 @@ class CodeGenerationScreen extends ConsumerWidget {
         number2: 20,
       ),
     );
-    final state5 = ref.watch(gStateNotifierProvider);
+    // build가 호출되는 대상이 전체 위젯이라는 문제가 있음
+    print('build');
     return DefaultLayout(
       title: 'CodeGenerationScreen',
       body: Column(
@@ -60,7 +61,23 @@ class CodeGenerationScreen extends ConsumerWidget {
             ),
           ),
           Text('State4: $state4'),
-          Text('State5: $state5'),
+          // Consumer 위젯으로 state를 감싸면 해당 state가 변경될 때만 build가 호출됨
+          Consumer(
+            builder: (context, ref, child) {
+              print('builder build');
+              final state5 = ref.watch(gStateNotifierProvider);
+              return Row(
+                children: [
+                  Text('State5: $state5'),
+                  // null safety를 위해 !를 붙여줌
+                  child!,
+                ],
+              );
+            },
+            // child로 입력된 위젯이 Counsumer의 builder의 child로 들어감
+            // 새로 렌더링하는 요소가 부분적일 때 최적화를 위해 사용
+            child: const Text('hello'),
+          ),
           Row(
             children: [
               ElevatedButton(
@@ -90,5 +107,17 @@ class CodeGenerationScreen extends ConsumerWidget {
         ],
       ),
     );
+  }
+}
+
+// 따로 하위 위젯을 만들면 국소적으로 build가 호출됨
+// 그러나 비효율적임
+class _StateFiveWidget extends ConsumerWidget {
+  const _StateFiveWidget({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state5 = ref.watch(gStateNotifierProvider);
+    return Text('State5: $state5');
   }
 }
