@@ -1,3 +1,6 @@
+import 'dart:core';
+
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -30,4 +33,27 @@ Future<int> gStateFuture2(GStateFuture2Ref ref) async {
 }
 
 // 2) 파라미터를 일반 함수처럼 사용할 수 있도록
+// 기존 방식
+class Parameter {
+  final int number1;
+  final int number2;
 
+  Parameter({
+    required this.number1,
+    required this.number2,
+  });
+}
+
+final testFamilyProvider = Provider.family<int, Parameter>((ref, parameter) {
+  return parameter.number1 * parameter.number2;
+});
+
+// Code Generation 방식
+@riverpod
+int gStateMultiply(
+  GStateMultiplyRef ref, {
+  required int number1,
+  required int number2,
+}) {
+  return number1 * number2;
+}
