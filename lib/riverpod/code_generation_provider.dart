@@ -13,5 +13,21 @@ String gState(GStateRef ref) {
   return 'Hello  Code Generation';
 }
 
+// AutoDispose 키워드가 자동으로 생성됨
+@riverpod
+Future<int> gStateFuture(GStateFutureRef ref) async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 10;
+}
+
+@Riverpod(
+  // autoDispose가 호출되지 않음
+  keepAlive: true,
+)
+Future<int> gStateFuture2(GStateFuture2Ref ref) async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 10;
+}
+
 // 2) 파라미터를 일반 함수처럼 사용할 수 있도록
 
