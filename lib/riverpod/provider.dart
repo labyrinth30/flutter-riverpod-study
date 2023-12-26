@@ -13,15 +13,11 @@ final filteredShoppingListProvider = Provider<List<ShoppingItemModel>>(
     if (filterState == FilterState.all) {
       return shoppingListState;
     }
-    return shoppingListState.where(
-      (element) {
-        if (filterState == FilterState.spicy) {
-          return element.isSpicy;
-        } else {
-          return !element.isSpicy;
-        }
-      },
-    ).toList();
+    return shoppingListState
+        .where((element) => filterState == FilterState.spicy
+            ? element.isSpicy
+            : !element.isSpicy)
+        .toList();
   },
 );
 
