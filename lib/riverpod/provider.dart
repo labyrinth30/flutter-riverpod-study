@@ -30,4 +30,5 @@ enum FilterState {
   notSpicy,
 }
 
+// 초기값으로 all을 줌
 final filterProvider = StateProvider<FilterState>((ref) => FilterState.all);
