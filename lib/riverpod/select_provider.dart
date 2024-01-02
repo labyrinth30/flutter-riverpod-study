@@ -39,6 +39,8 @@ class SelectNotifier extends StateNotifier<ShoppingItemModel> {
     //   fontSize: 30,
     // );
 
+    // isSpicy만 변경하는 메소드
+    // state는 SelectNotifier가 관리하는 ShoppingItemModel임
     state = state.copyWith(
       isSpicy: !state.isSpicy,
     );

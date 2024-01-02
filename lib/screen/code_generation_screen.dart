@@ -76,10 +76,13 @@ class CodeGenerationScreen extends ConsumerWidget {
             },
             // child로 입력된 위젯이 Counsumer의 builder의 child로 들어감
             // 새로 렌더링하는 요소가 부분적일 때 최적화를 위해 사용
+            // 성능 최적화를 위해 사용
             child: const Text('hello'),
           ),
           Row(
             children: [
+              // ref.read는 일시적 업데이트 등을 위해 사용함.
+              // 해당 프로바이더를 읽어올 수 있음
               ElevatedButton(
                 onPressed: () {
                   ref.read(gStateNotifierProvider.notifier).increment();
