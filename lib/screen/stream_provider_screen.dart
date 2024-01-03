@@ -16,6 +16,9 @@ class StreamProviderScreen extends ConsumerWidget {
       body: Center(
         child: state.when(
             // 상황별로 다른 위젯을 보여줌
+            // loading은 데이터가 들어오는 중일 때
+            // error는 에러가 발생했을 때
+            // data는 데이터가 들어왔을 때
             data: ((data) => Text(
                   data.toString(),
                 )),
